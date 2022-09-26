@@ -1,0 +1,23 @@
+.loginSection {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.subLoginSection {
+  background-color: rgb(229, 229, 229);
+  width: 40vw;
+}
+.loginTextSection {
+  background-color: rgb(97, 97, 135);
+  border: 2px solid rgb(97, 97, 135);
+}
+.subLoginSectionHeader {
+  background-color: rgb(97, 97, 135);
+  color: white;
+  text-align: center;
+}
+.inputSection {
+  display: flex;
+  flex-direction: column;
+}
