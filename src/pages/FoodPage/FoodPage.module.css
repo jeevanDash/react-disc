@@ -1,0 +1,11 @@
+.foodPage {
+  background-color: aliceblue;
+  min-height: 100vh;
+}
+.card {
+  margin: 1em;
+}
+.cardContent {
+  border: 2px solid black;
+  height: 5rem;
+}
