@@ -36,29 +36,29 @@ const PollContextProvider = ({ children }) => {
   const addFavoriteDishes = (dish, rank) => {
     const tempData = { ...dish, score: rank };
     const prevDishes = [...favoriteDishes];
-    var foundDishIndex = prevDishes.findIndex((item) => item.id === dish.id);
-    var sameRankDish = prevDishes.findIndex((dish) => dish.score === rank);
-    console.log("fo", foundDishIndex);
-    console.log("sa", sameRankDish);
+    const foundDishIndex = prevDishes.findIndex((item) => item.id === dish.id);
+    const sameRankDish = prevDishes.findIndex((dish) => dish.score === rank);
     if (foundDishIndex !== -1 || sameRankDish !== -1) {
-      if (sameRankDish !== -1) {
-        prevDishes.splice(foundDishIndex, 1);
+      if (sameRankDish !== -1 && foundDishIndex !== -1) {
+        prevDishes.splice(sameRankDish, 1);
+        const updateIndex = prevDishes.findIndex((item) => item.id === dish.id);
+        if (updateIndex !== -1) {
+          prevDishes[updateIndex] = {
+            ...dish,
+            score: rank,
+          };
+        }
+      } else if (foundDishIndex === -1 && sameRankDish !== -1) {
         prevDishes[sameRankDish] = {
           ...dish,
           score: rank,
         };
-
-        console.log(prevDishes);
       } else {
         prevDishes[foundDishIndex] = {
           ...dish,
           score: rank,
         };
       }
-      /*prevDishes[sameRankDish !== -1 ? sameRankDish : foundDishIndex] = {
-        ...dish,
-        score: rank,
-      };*/
       prevDishes.sort((x, y) => y.score - x.score);
       setFavoriteDishes([...prevDishes]);
       return;
@@ -67,7 +67,6 @@ const PollContextProvider = ({ children }) => {
       newDishes.sort((x, y) => y.score - x.score);
       setFavoriteDishes([...newDishes]);
     }
-    console.log(prevDishes);
   };
 
   const value = {
