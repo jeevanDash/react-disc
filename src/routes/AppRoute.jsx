@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Loading from "../components/UI/Loading";
+
 const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
 const FoodPage = lazy(() => import("../pages/FoodPage/FoodPage"));
 
